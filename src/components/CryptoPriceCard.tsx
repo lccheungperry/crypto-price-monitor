@@ -4,13 +4,14 @@ interface CryptoPriceCardProps {
     name: string,
     price: number,
     volume: number,
+    asset_id: string,
 }
 
 const CryptoPriceCard = (props: CryptoPriceCardProps) => {
-    const { name, price, volume } = props
+    const { name, price, volume, asset_id } = props
 
     return (<>
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
+        <div className="max-w-sm rounded overflow-hidden shadow-lg" data-testid={asset_id}>
             <div className="px-6 py-4">
                 <div className="font-bold text-2xl mb-2">{name}</div>
                 <p className="text-amber-500 text-base">{price ? `$${price}` : '-'}</p>

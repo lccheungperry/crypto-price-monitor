@@ -56,8 +56,8 @@ const CryptoPriceMonitor = () => {
 
   return (<>
     <div className="container mx-auto p-4">
-      <div className="text-3xl py-4">Cryptocurrency Realtime Price</div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="text-3xl py-4" data-testid="title">Cryptocurrency Realtime Price</div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" data-testid="assets">
         {assetData.map(asset => {
           const intervalKey = `volume_${interval}_usd` as keyof Asset
           let volume: any
@@ -65,6 +65,7 @@ const CryptoPriceMonitor = () => {
             volume = asset[intervalKey]
           }
           return <CryptoPriceCard
+            asset_id={asset.asset_id}
             name={asset.name}
             price={asset.price_usd}
             volume={volume}
